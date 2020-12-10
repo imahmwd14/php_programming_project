@@ -27,7 +27,7 @@
 
             $r = mysqli_query($conn, $q);
 
-            while ($row = mysqli_fetch_assoc($r)) {
+            while ($r && $row = mysqli_fetch_assoc($r)) {
                 $u_name = $row['name'];
                 $t_made = $row['time'];
                 $content = $row['content'];

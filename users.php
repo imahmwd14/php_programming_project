@@ -23,11 +23,11 @@
             <?php
             include 'database/conn.php';
 
-            $q = "SELECT * FROM USERS;";
+            $q = "SELECT * FROM users;";
 
             $r = mysqli_query($conn, $q);
 
-            while ($row = mysqli_fetch_assoc($r)) {
+            while ($r && $row = mysqli_fetch_assoc($r)) {
                 $u_name = $row['username'];
                 $u_name =  "<a href=\"user.php?name=$u_name\">$u_name</a>";
                 echo '

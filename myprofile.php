@@ -39,7 +39,7 @@
 
             $u_name = $_SESSION['username'];
 
-            $q = "SELECT *, DATE_FORMAT(posts.time_made, '%W, %d/%M/%Y') AS time from posts inner join users on users.username = '$u_name' order by posts.id desc limit 100;";
+            $q = "SELECT *, DATE_FORMAT(posts.time_made, '%W, %d/%M/%Y') AS time from posts inner join users on users.username = posts.user_name and posts.user_name = '$u_name' order by posts.id desc limit 100;";
 
             $r = mysqli_query($conn, $q);
 

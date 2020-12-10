@@ -1,5 +1,8 @@
 <?php
-session_start();
+try {
+    session_start();
+} catch (\Throwable $th) {
+}
 ?>
 
 <meta name="viewport" content="width=device-width, initial-scale=1">
