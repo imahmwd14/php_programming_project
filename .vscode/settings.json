@@ -1,0 +1,20 @@
+{
+    "open-php-html-js-in-browser.selectedBrowser": "Chrome",
+    "open-php-html-js-in-browser.customHost": "localhost",
+    "open-php-html-js-in-browser.documentRootFolder": "C:\\xampp_new\\htdocs\\",
+    "sqltools.connections": [
+        {
+            "mysqlOptions": {
+                "authProtocol": "default"
+            },
+            "previewLimit": 50,
+            "server": "localhost",
+            "port": 3306,
+            "driver": "MySQL",
+            "name": "test_connection",
+            "database": "facebook",
+            "username": "root",
+            "password": ""
+        }
+    ],
+}
