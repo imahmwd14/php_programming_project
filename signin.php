@@ -10,12 +10,6 @@
 <body class="bg-dark">
 
     <?php
-    if (isset($_POST['username'])) {
-        $_SESSION['username'] = $_POST['username'];
-    }
-    ?>
-
-    <?php
     include 'include/nav.php';
     ?>
 
@@ -24,6 +18,26 @@
         <div class="col-md-6 bg-light m-auto p-5">
 
             <form action="" method="post" class="">
+
+                <?php
+                if (isset($_POST['username'])) {
+                    $u_name = $_POST['username'];
+                    $u_pass = $_POST['pass'];
+
+                    include 'database/conn.php';
+
+                    $q =  "select * from users where username = '$u_name' and pass = '$u_pass';";
+
+                    $r = mysqli_query($conn, $q);
+
+                    if ($r && $r->num_rows > 0) {
+                        $_SESSION['username'] = $_POST['username'];
+                        header("location: myprofile.php");
+                    } else {
+                        echo "<h1>incorrect username or password!</h1>";
+                    }
+                }
+                ?>
 
                 <div class="form-group">
                     <label for="username">Username</label>

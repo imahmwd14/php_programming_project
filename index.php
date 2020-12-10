@@ -22,20 +22,13 @@
 
             <?php
             include 'database/conn.php';
-            $user_id = random_int(1, 2);
-            $content = "Allah Allah Allah Allah Allah Allah Allah Allah Allah Allah Allah Allah Allah Allah Allah Allah Allah Allah Allah Allah Allah Allah Allah Allah Allah Allah Allah Allah Allah Allah Allah Allah Allah Allah Allah Allah Allah Allah Allah Allah Allah Allah Allah Allah Allah Allah Allah Allah Allah Allah Allah Allah Allah Allah Allah Allah Allah Allah Allah Allah ";
-            include 'database/insert_post.php';
-            ?>
 
-            <?php
-            include 'database/conn.php';
-
-            $q = "SELECT *, DATE_FORMAT(posts.time_made, '%W, %d/%M/%Y') AS time from posts inner join users on users.id = posts.user_id order by posts.id desc limit 100;";
+            $q = "SELECT *, DATE_FORMAT(posts.time_made, '%W, %d/%M/%Y') AS time from posts inner join users on users.username = posts.user_name order by posts.id desc limit 100;";
 
             $r = mysqli_query($conn, $q);
 
             while ($row = mysqli_fetch_assoc($r)) {
-                $u_name = $row['username'];
+                $u_name = $row['name'];
                 $t_made = $row['time'];
                 $content = $row['content'];
 
@@ -44,8 +37,8 @@
                 echo '
             <div class="card mb-3 bg-light">
                 <div class="card-body">
-                  <h5 class="card-title">' . $u_name . '</h5>
-                  <h6 class="card-subtitle mb-2 text-muted">' . $t_made . '</h6>
+                  <h5 class="card-title">Poster: ' . $u_name . '</h5>
+                  <h6 class="card-subtitle mb-2 text-muted">Time: ' . $t_made . '</h6>
                   <p class="card-text">' . $content . '</p>
                 </div>
             </div>

@@ -3,7 +3,7 @@
 <head>
 
     <?php
-    $title = $_GET['name'] . "'s Profile";
+    $title = "My Profile";
     include 'include/header.php';
     ?>
 </head>
@@ -14,18 +14,32 @@
     include 'include/nav.php';
     ?>
 
+    <?php
+    if (isset($_POST['submit']) && isset($_POST['content'])) {
+        include 'database/insert_post.php';
+    }
+
+    ?>
+
     <div class="container">
 
         <div class="col-md-9 m-auto bg-light p-3">
+            <form action="" method="POST">
+                <div class="form-group">
+                    <label class="h1" for="content">Make a post</label>
+                    <textarea class="form-control" name="content" id="content" rows="3"></textarea>
+                </div>
 
-            <h1>Latest posts made by <?php echo $_GET['name'] ?></h1>
+                <button type="submit" name="submit" class="btn btn-primary">Post</button>
+            </form>
 
+            <h1>My posts</h1>
             <?php
             include 'database/conn.php';
 
-            $u_name = $_GET['name'];
+            $u_name = $_SESSION['username'];
 
-            $q = "SELECT *, DATE_FORMAT(posts.time_made, '%W, %d/%M/%Y') AS time from posts inner join users on users.id = posts.user_id and users.username = '$u_name' order by posts.id desc limit 100;";
+            $q = "SELECT *, DATE_FORMAT(posts.time_made, '%W, %d/%M/%Y') AS time from posts inner join users on users.username = '$u_name' order by posts.id desc limit 100;";
 
             $r = mysqli_query($conn, $q);
 
@@ -33,6 +47,8 @@
                 $u_name = $row['username'];
                 $t_made = $row['time'];
                 $content = $row['content'];
+
+                $u_name =  "<a href=\"user.php?name=$u_name\">$u_name</a>";
 
                 echo '
             <div class="card mb-3 bg-light">
@@ -45,7 +61,6 @@
                 ';
             }
             ?>
-
         </div>
 
     </div>

@@ -1,14 +1,6 @@
-<?php
-session_start();
-if (isset($_SESSION['username'])) {
-    echo $_SESSION['username'];
-}
-?>
-
-
 <nav class="navbar sticky-top navbar-expand-sm navbar-dark bg-dark">
 
-    <a href="index.php" class="navbar-brand">Facebook</a>
+    <a href="index.php" class="navbar-brand">Mahmoud Darwish's Facebook</a>
 
     <button class="navbar-toggler" data-toggle="collapse" data-target="#navbarMenu">
         <span class="navbar-toggler-icon"></span>
@@ -32,21 +24,15 @@ if (isset($_SESSION['username'])) {
 
         </ul>
 
-        <ul class="navbar-nav ml-auto">
+        <?php
 
-            <li class="nav-item <?php if ($title == "Sign-in") {
-                                    echo "active";
-                                } ?>">
-                <a href="signin.php" class="nav-link">Sign-in</a>
-            </li>
+        if (!isset($_SESSION['username'])) {
+            include 'signin_and_signup_nav_items.php';
+        } else {
+            include 'profile_and_logout.php';
+        }
 
-            <li class="nav-item <?php if ($title == "Sign-up") {
-                                    echo "active";
-                                } ?>">
-                <a href="signup.php" class="nav-link">Sign-up</a>
-            </li>
-
-        </ul>
+        ?>
 
     </div>
 
