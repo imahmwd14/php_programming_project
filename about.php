@@ -3,7 +3,7 @@
 <head>
     <?php
     session_reset();
-    $title = "Home";
+    $title = "Mahmoud Darwish About";
     include 'include/header.php';
     ?>
 </head>

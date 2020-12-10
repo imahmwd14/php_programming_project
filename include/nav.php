@@ -22,7 +22,7 @@
                 <a href="users.php" class="nav-link">Users</a>
             </li>
 
-            <li class="nav-item <?php if ($title == "About") {
+            <li class="nav-item <?php if ($title == "Mahmoud Darwish About") {
                                     echo "active";
                                 } ?>">
                 <a href="about.php" class="nav-link">About The Author Mahmoud Darwish</a>
